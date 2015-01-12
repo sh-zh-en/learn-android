@@ -4,7 +4,7 @@ class Demo0112{
 		int a=10;
 		int b=20;
 		System.out.println("交换前a="+a+",b="+b);
-		int max1=a>b?a:b;
+		int max1 = a>b?a:b;
 		System.out.println("The max = "+max1);
 		//实现a与b值的交换
 		/*
