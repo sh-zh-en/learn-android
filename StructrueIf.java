@@ -12,7 +12,7 @@ class StructrueIf{
 	if(x == 10){
 		System.out.println("x=10");
 	}
-	if(x == 20){
+	else if(x == 20){
 		System.out.println("X=20");
 	}
 	else{
