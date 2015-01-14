@@ -18,5 +18,10 @@ class CycleFor{
 			sum01 += i;
 		}		
 		System.out.println("1-100的和为："+sum01);
+		
+		//求阶乘 n!
+		// n! = n*(n-1)! 即 n! = n*(n-1)*……*3*2*1
+		
+		
 	}
 }
