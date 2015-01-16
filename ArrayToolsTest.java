@@ -2,6 +2,7 @@
 	对数组进行操作的
 */
 import java.util.Scanner;
+import java.util.ArrayList;
 
 class ArrayToolsTest{
 	public static void main(String[] args){
@@ -32,7 +33,7 @@ class ArrayTools{
 	public static char yesNo(){
 		Scanner input = new Scanner(System.in);
 		boolean flag = true;
-		char x;
+		char x = '0';
 		String str;
 		while(flag){
 			str = input.nextLine();
@@ -51,7 +52,7 @@ class ArrayTools{
 	public static int arrayLengh(){
 		Scanner input = new Scanner(System.in);
 		boolean flag = true;
-		int len;
+		int len = 0;
 		System.out.print("请输入您要建立的数组长度：");
 		while(flag){
 			len = input.nextInt();
@@ -71,7 +72,7 @@ class ArrayTools{
 		int[] array = new int[x];
 		Scanner input = new Scanner(System.in);
 		for(int i=0;i<x;i++){
-			System.out.print("请输入数组第"+(i+1)+"个值：");
+			System.out.print("		请输入数组第"+i+"个值：");
 			array[i] = input.nextInt();
 		}
 		return array;		
@@ -79,15 +80,37 @@ class ArrayTools{
 	
 	//方法用途：键盘输入一个不定长度的数据，每输入一个数据询问是否继续数据，
 	//当得到肯定答复后继续数据数据，得到否定答复后，退出输入数据。
+	/*
 	public static int[] arrayInput(){
 		Scanner input = new Scanner(System.in);
 		boolean flag = true;
 		char yn;
 		int[] array;
-		int i=1;
+		int i=0;
 		while(flag){
-			System.out.print("请输入数组第 "+i+" 个数据：");
+			System.out.print("		请输入数组第 "+i+" 个数据：");
 			array[i] = input.nextInt();
+			i++;
+			System.out.print("是否继续输入数据（y/n）：");
+			yn = yesNo();
+			if(yn=='y' || yn=='Y'){
+				flag = false;
+				return array;
+			}
+		}
+		return array;
+	}
+	*/
+		public static int[] arrayInput(){
+		Scanner input = new Scanner(System.in);
+		boolean flag = true;
+		char yn;
+		int i=0;
+		int[] array;		
+		ArrayList<Integer> fieldList = new ArrayList<Integer>();
+		while(flag){
+			System.out.print("		请输入数组第 "+i+" 个数据：");
+			fieldList.add(input.nextInt());
 			i++;
 			System.out.print("是否继续输入数据（y/n）：");
 			yn = yesNo();
@@ -95,8 +118,10 @@ class ArrayTools{
 				flag = false;
 			}
 		}
+		array = (Integer[])fieldList.toArray(new Integer[fieldList.size()]);
 		return array;
 	}
+	
 	
 	//方法用途：传入一个数组，将数组打印成一行
 	public static void arrayTriversal(int[] array){
