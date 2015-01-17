@@ -1,29 +1,57 @@
 /*
-	对数组进行操作的
+	对数组进行操作；
+	实现：不需要用类定义对象，直接调用类中方法，将构造方法定义为private,成员方法均为 public Static。
+	
+	
+	数组list
+	ArrayList<int[]> list = new ArrayList<int[]>(); 
+	整数list
+	ArrayList<Integer> list = new ArrayList<Integer>();
+*/
+/*
+	import java.util.ArrayList;
+	class Test{
+		public static void main(String[] args){
+			
+			String[] array;// 要初始化的数组
+		
+			ArrayList<Integer> fieldList = new ArrayList<Integer>();  //首先创建一个ArrayList类型的对象
+			fieldList.add(23);      //向其中添加元素field1
+			//将ArrayList类型的对象转换为String类型，即初始化数组array.
+			array= (int[])fieldList.toArray(new int [fieldList.size()]);
+		
+			for(int i=0;i<array.length;i++){
+				System.out.println(array[i]);
+			}
+		}
+	}
 */
 import java.util.Scanner;
 import java.util.ArrayList;
+//import java.util.Integer;
 
 class ArrayToolsTest{
 	public static void main(String[] args){
 		System.out.println("测试一：输入一个数据作为数组长度，键盘输入数组，然后遍历数组。");
-		System.out.println("	第一步，输入一个数据作为数组长度");
+		System.out.println("第一步，输入一个数据作为数组长度");
 		int len = ArrayTools.arrayLengh();
-		System.out.println("	第二步，键盘输入数组");
-		int[] array01 = ArrayTools.arrayInput(len);
-		System.out.println("	第三步，然后遍历数组");
-		ArrayTools.arrayTriversal(array01);
-		
+		System.out.println("第二步，键盘输入int类型数组");
+		int[] array01 = ArrayTools.arrayInputInt(len);
+		System.out.print("第三步，遍历int类型数组：");
+		ArrayTools.arrayTriversal(array01);		
+		System.out.println("第四步，键盘输入int类型数组");
+		String[] array02 = ArrayTools.arrayInputString(len);
+		System.out.print("第五步，遍历String数组：");
+		ArrayTools.arrayTriversal(array02);
+	/*
 		System.out.println("测试二：键盘输入可变长度数组，然后遍历数组。");
 		System.out.println("	第一步，键盘输入可变长度数组");
-		int[] array02 = ArrayTools.arrayInput();
+		int[] array03 = ArrayTools.arrayInput();
+		//String[] array03 = ArrayTools.arrayInput();
 		System.out.println("	第二步，遍历数组");
-		ArrayTools.arrayTriversal(array02);
+		ArrayTools.arrayTriversal(array02);  */
 	}
 }
-
-
-
 
 class ArrayTools{
 	private ArrayTools(){
@@ -53,11 +81,11 @@ class ArrayTools{
 		Scanner input = new Scanner(System.in);
 		boolean flag = true;
 		int len = 0;
-		System.out.print("请输入您要建立的数组长度：");
+		System.out.print("	请输入您要建立的数组长度：");
 		while(flag){
 			len = input.nextInt();
 			if(len<1){
-				System.out.println("您输入的数据不能建立数组，请重新输入：");
+				System.out.println("	您输入的数据不能建立数组，请重新输入：");
 			}
 			else{
 				flag = false;
@@ -68,12 +96,21 @@ class ArrayTools{
 	}
 	
 	//方法用途，传入一个int类型数据x作为数组的长度，键盘给数组赋值
-	public static int[] arrayInput(int x){
+	public static int[] arrayInputInt(int x){
 		int[] array = new int[x];
 		Scanner input = new Scanner(System.in);
 		for(int i=0;i<x;i++){
-			System.out.print("		请输入数组第"+i+"个值：");
+			System.out.print("	请输入数组第"+i+"个值：");
 			array[i] = input.nextInt();
+		}
+		return array;		
+	}
+	public static String[] arrayInputString(int x){
+		String[] array = new String[x];
+		Scanner input = new Scanner(System.in);
+		for(int i=0;i<x;i++){
+			System.out.print("	请输入数组第"+i+"个值：");
+			array[i] = input.nextLine();
 		}
 		return array;		
 	}
@@ -100,16 +137,19 @@ class ArrayTools{
 		}
 		return array;
 	}
-	*/
+	
 		public static int[] arrayInput(){
 		Scanner input = new Scanner(System.in);
 		boolean flag = true;
 		char yn;
 		int i=0;
-		int[] array;		
-		ArrayList<Integer> fieldList = new ArrayList<Integer>();
+		int[] array;
+		//String[] array;		
+		ArrayList<int[]> fieldList = new ArrayList<int[]>();
+		//ArrayList<String> fieldList = new ArrayList<String>();
 		while(flag){
-			System.out.print("		请输入数组第 "+i+" 个数据：");
+			System.out.print("	请输入数组第 "+i+" 个数据：");
+			//fieldList.add(input.nextInt());
 			fieldList.add(input.nextInt());
 			i++;
 			System.out.print("是否继续输入数据（y/n）：");
@@ -118,10 +158,11 @@ class ArrayTools{
 				flag = false;
 			}
 		}
-		array = (Integer[])fieldList.toArray(new Integer[fieldList.size()]);
+		array = (int[])fieldList.toArray(new int [fieldList.size()]);
+		//array = (String[])fieldList.<String>toArray(new String[fieldList.size()]);
 		return array;
 	}
-	
+	*/
 	
 	//方法用途：传入一个数组，将数组打印成一行
 	public static void arrayTriversal(int[] array){
@@ -134,7 +175,17 @@ class ArrayTools{
 			}
 		}
 	}
-	
+		//方法用途：传入一个数组，将数组打印成一行
+	public static void arrayTriversal(String[] array){
+		for(int i=0;i<array.length;i++){
+			if(i==array.length-1){
+				System.out.println(array[i]);
+			}
+			else{
+				System.out.print(array[i] + "，	");
+			}
+		}
+	}
 }
 
 
